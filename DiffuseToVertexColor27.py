@@ -19,7 +19,7 @@ class MakeVertexColors(bpy.types.Operator):
     bl_label = "Convert Diffuse to Vertex Colors"
 
 
-    def execute(self, context) :
+    def execute(self, context):
         for obj in bpy.data.objects:
             if not obj.active_material is None:
                 if obj.type == 'MESH':
