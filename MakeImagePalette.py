@@ -117,7 +117,7 @@ class MakeImagePalette(bpy.types.Operator):
         image.pixels = pixels
 
         # Write to disk
-        image.filepath_raw = "/tmp/temp.png"
+        image.filepath_raw = "/tmp/palette.png"
         image.file_format = 'PNG'
         image.save()
 

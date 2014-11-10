@@ -23,7 +23,7 @@ class PrepareSketchupModel(bpy.types.Operator):
         bpy.ops.object.make_single_user( type='SELECTED_OBJECTS', object=True, obdata=True )
         bpy.ops.object.transform_apply( rotation=True, scale=True )
         bpy.ops.object.select_all( action='DESELECT' )
-        bpy.ops.mesh.make_vertexcolors()
+        bpy.ops.mesh.make_imagepalette()
         bpy.ops.mesh.collapse_hierarchy()
         bpy.ops.mesh.assign_vertexcoloured_material()
 
