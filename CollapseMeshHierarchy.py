@@ -43,7 +43,8 @@ class CollapseMeshHierarchy(bpy.types.Operator):
                 if parent_name not in grouped_by_parent:
                     grouped_by_parent[parent_name] = []
 
-                grouped_by_parent[parent_name].append( obj )
+                if obj.type == 'MESH' and obj.active_material.active_texture is None:
+                    grouped_by_parent[parent_name].append( obj )
 
             try:
                 parent_name = root.parent.name
@@ -52,10 +53,14 @@ class CollapseMeshHierarchy(bpy.types.Operator):
             if parent_name not in grouped_by_parent:
                 grouped_by_parent[parent_name] = []
                 
-            grouped_by_parent[parent_name].append( root )
+            if root.type == 'MESH' and root.active_material.active_texture is None:
+                grouped_by_parent[parent_name].append( root )
 
             for key in grouped_by_parent:
                 group = grouped_by_parent[key]
+                if len(group) < 2:
+                    continue
+                    
                 join_root = group[ len(group) - 1 ]
                 if join_root is not None and len(group) > 1:
                     self.join_group( join_root, group )
